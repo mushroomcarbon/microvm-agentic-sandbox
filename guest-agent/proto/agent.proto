@@ -1,0 +1,71 @@
+syntax = "proto3";
+
+option go_package = "guest-agent/proto";
+
+service Agent {
+  rpc Exec(ExecRequest) returns (stream ExecResponse);
+  rpc StdinWrite(StdinWriteRequest) returns (StdinWriteResponse);
+  rpc Signal(SignalRequest) returns (SignalResponse);
+  rpc FileRead(FileReadRequest) returns (FileReadResponse);
+  rpc FileWrite(FileWriteRequest) returns (FileWriteResponse);
+  rpc Watch(WatchRequest) returns (stream WatchEvent);
+}
+
+message ExecRequest {
+  repeated string cmd = 1;
+  map<string, string> env = 2;
+  string workdir = 3;
+  // exec_id is assigned by the adapter and used by StdinWrite and Signal to
+  // route follow-up calls to the running process. Required.
+  string exec_id = 4;
+}
+
+message ExecResponse {
+  bytes stdout = 1;
+  bytes stderr = 2;
+  int32 exit_code = 3;
+  bool done = 4;
+}
+
+message StdinWriteRequest {
+  string exec_id = 1;
+  bytes data = 2;
+  // If true, close stdin after writing data (sends EOF to the process). Use
+  // with empty data to close stdin without writing more.
+  bool eof = 3;
+}
+
+message StdinWriteResponse {}
+
+message SignalRequest {
+  string exec_id = 1;
+  // POSIX signal number, e.g. 15 for SIGTERM, 9 for SIGKILL.
+  int32 signal = 2;
+}
+
+message SignalResponse {}
+
+message FileReadRequest {
+  string path = 1;
+}
+
+message FileReadResponse {
+  bytes data = 1;
+}
+
+message FileWriteRequest {
+  string path = 1;
+  bytes data = 2;
+  uint32 mode = 3;
+}
+
+message FileWriteResponse {}
+
+message WatchRequest {
+  string path = 1;
+}
+
+message WatchEvent {
+  string path = 1;
+  string op = 2;
+}
