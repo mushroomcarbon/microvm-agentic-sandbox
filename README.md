@@ -1,6 +1,6 @@
 # microvm-agentic-sandbox
 
-A Kubernetes-based sandbox execution service. Provision isolated microVM environments on demand, run commands inside them, manage files, and control their lifecycle, all through a simple REST API! Really good for agentic workloads because of speed, isolation, and (enough) persistence as compared to Lambda, for example, which would be better for a more traditional chatbot workflow.
+A Kubernetes-based sandbox execution service. Provision isolated microVM environments on demand, run commands inside them, manage files, and control their lifecycle, all through a simple REST API; really good for agentic workloads because of speed, isolation, and (enough) persistence as compared to Lambda, for example, which would be better for a more traditional chatbot workflow.
 
 Each sandbox runs in its own [Kata Containers](https://katacontainers.io/) microVM (Cloud Hypervisor backend), giving strong isolation between tenants without the overhead of full VMs.
 
