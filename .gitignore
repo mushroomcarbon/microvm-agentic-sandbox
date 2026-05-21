@@ -1,0 +1,28 @@
+# Compiled binaries
+adapter/adapter
+guest-agent/guest-agent
+agent-client/agent-client
+
+# Go build cache
+*.test
+*.out
+
+# Environment / secrets
+.env
+*.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Kubernetes / kubeconfig (never commit these)
+kubeconfig
+*.kubeconfig
+k3s.yaml
