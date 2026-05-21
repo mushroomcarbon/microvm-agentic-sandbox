@@ -6,11 +6,11 @@ Each sandbox runs in its own [Kata Containers](https://katacontainers.io/) micro
 
 ## Features
 
-- **Sandbox lifecycle** — create, inspect, and kill isolated microVM sessions
-- **Command execution** — run foreground or background commands with full stdout/stderr capture and SSE streaming
-- **Postgres-backed state** — survives adapter restarts; reconciles stale pods automatically on startup
-- **Configurable sessions** — per-session lifetime deadlines, idle timeouts, and auto-pause/kill policies
-- **Egress control** — `none`, `limited` (allowlist), or `full` network modes per sandbox
+- **Sandbox lifecycle**: create, inspect, and kill isolated microVM sessions
+- **Command execution**: run foreground or background commands with full stdout/stderr capture and SSE streaming
+- **Postgres-backed state**: survives adapter restarts; reconciles stale pods automatically on startup
+- **Configurable sessions**: per-session lifetime deadlines, idle timeouts, and auto-pause/kill policies
+- **Egress control**: `none`, `limited` (allowlist), or `full` network modes per sandbox
 
 ## Architecture
 
@@ -140,4 +140,4 @@ The adapter accepts these flags:
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT: see [LICENSE](LICENSE).
